@@ -7,55 +7,82 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #111;
-            color: #fff;
+            background: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
             text-align: center;
-            padding-top: 80px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
         }
         h1 {
-            font-size: 60px;
+            font-size: 32px;
             font-weight: 900;
-            color: #0af;
-            text-shadow: 0 0 20px #0af, 0 0 40px #08c, 0 0 80px #07a;
+            color: black;
         }
         input {
-            padding: 12px;
-            width: 250px;
-            font-size: 18px;
-            border: none;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
             border-radius: 8px;
+            border: 1px solid #ccc;
         }
         button {
-            padding: 12px 20px;
-            background: #0af;
-            color: #fff;
-            font-size: 18px;
+            width: 100%;
+            padding: 12px;
+            background: black;
+            color: white;
             border: none;
             border-radius: 8px;
-            margin-left: 10px;
+            font-size: 16px;
         }
         #result {
-            margin-top: 20px;
-            font-size: 22px;
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-<h1>DOMAIN KEY</h1>
+<div class="box">
+    <h1>Domain Key</h1>
 
-<input type="text" id="domain" placeholder="example.com">
-<button onclick="checkDomain()">Yoxla</button>
+    <input type="text" id="domain" placeholder="example.com">
+    <button onclick="checkDomain()">Yoxla</button>
 
-<div id="result"></div>
+    <div id="result"></div>
+</div>
 
 <script>
 function checkDomain() {
-    const domain = document.getElementById("domain").value.trim();
+    let domain = document.getElementById("domain").value;
+
     if (!domain) {
-        document.getElementById("result").innerText = "Domain daxil edin!";
+        document.getElementById("result").innerHTML = "Domen daxil et!";
         return;
     }
 
-    fetch(`https://api.domainsdb.info/v1/domains/search?domain=${domain}`)
-        .then
+    fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://" + domain))
+        .then(response => {
+            if (response.ok) {
+                document.getElementById("result").innerHTML = "❌ Domen istifadə olunur!";
+            } else {
+                document.getElementById("result").innerHTML = "✔️ Domen boşdur!";
+            }
+        })
+        .catch(() => {
+            document.getElementById("result").innerHTML = "✔️ Domen boşdur!";
+        });
+}
+</script>
+
+</body>
+</html>
