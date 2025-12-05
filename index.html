@@ -1,32 +1,161 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domain Key</title>
+    <title>Admin Panel</title>
     <style>
         body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #0d0d0d;
             font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
         }
 
-        h1 {
-            font-size: 70px;
-            font-weight: 900;
-            color: #000;
-            text-shadow: 
-                3px 3px 0 #555,
-                6px 6px 0 #333,
-                9px 9px 0 #000;
+        .page {
+            display: none;
+            padding: 20px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 10px;
+            font-size: 18px;
+            border-radius: 6px;
+        }
+
+        button:hover {
+            background-color: #555;
+            cursor: pointer;
+        }
+
+        input {
+            padding: 10px;
+            width: 220px;
+            margin: 8px;
+            border-radius: 5px;
+        }
+
+        img {
+            width: 70%;
+            margin-top: 20px;
+        }
+
+        .keyBox {
+            background-color: #222;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
-    <h1>DOMAIN KEY</h1>
+
+<!-- LOGIN SAYFASI -->
+<div id="loginPage" class="page active">
+    <h1>Admin Login</h1>
+    <input id="loginUser" placeholder="Login"><br>
+    <input id="loginPass" placeholder="Password" type="password"><br>
+    <button onclick="login()">Giriş Yap</button>
+</div>
+
+<!-- 1. SAYFA -->
+<div id="page1" class="page">
+    <h1>1. Sayfa</h1>
+    <img src="https://i.ibb.co/P6YqvJr/IMG-20250114-024523.jpg">
+    <br><br>
+    <button onclick="goPage(2)">2. Sayfaya Geç</button>
+</div>
+
+<!-- 2. SAYFA -->
+<div id="page2" class="page">
+    <h1>2. Sayfa</h1>
+    <p>Burada istediğin tasarım olur.</p>
+    <button onclick="goPage(3)">3. Sayfaya Geç</button>
+</div>
+
+<!-- 3. SAYFA - KEY GENERATOR -->
+<div id="page3" class="page">
+    <h1>Key Generator</h1>
+
+    <select id="keyType">
+        <option value="free">Free Key</option>
+        <option value="1h">1 Hour - 1$</option>
+        <option value="1d">1 Day - 3$</option>
+        <option value="7d">1 Week - 12$</option>
+        <option value="1m">1 Month - 25$</option>
+    </select>
+    <br><br>
+
+    <button onclick="generateKey()">Generate Key</button>
+
+    <div id="result" class="keyBox"></div>
+</div>
+
+
+<script>
+
+function goPage(num) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById("page" + num).classList.add("active");
+}
+
+function login() {
+    let user = document.getElementById("loginUser").value;
+    let pass = document.getElementById("loginPass").value;
+
+    if (user === "Admin97" && pass === "Admin1997") {
+        document.getElementById("loginPage").classList.remove("active");
+        document.getElementById("page1").classList.add("active");
+    } else {
+        alert("Yanlış Login veya Password!");
+    }
+}
+
+function randomLetters(length) {
+    let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let out = "";
+    for (let i = 0; i < length; i++) out += chars[Math.floor(Math.random() * chars.length)];
+    return out;
+}
+
+function generateKey() {
+    let type = document.getElementById("keyType").value;
+    let code = "";
+
+    if (type === "free") {
+        code = "Admin-FREE-" + randomLetters(4);
+    }
+
+    if (type === "1h") {
+        code = "Admin-3H-" + randomLetters(6);
+    }
+
+    if (type === "1d") {
+        code = "Admin-1D-" + randomLetters(6);
+    }
+
+    if (type === "7d") {
+        code = "Admin-7W-" + randomLetters(6);
+    }
+
+    if (type === "1m") {
+        code = "Admin-1M-" + randomLetters(6);
+    }
+
+    document.getElementById("result").innerHTML = code;
+}
+
+</script>
+
 </body>
 </html>
