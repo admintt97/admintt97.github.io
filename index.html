@@ -6,83 +6,20 @@
     <title>Domain Key</title>
     <style>
         body {
+            margin: 0;
+            background: #0d0d0d;
             font-family: Arial, sans-serif;
-            background: #f1f1f1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .box {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 400px;
             text-align: center;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
-        h1 {
-            font-size: 32px;
-            font-weight: 900;
-            color: black;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            background: black;
             color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
         }
-        #result {
-            margin-top: 15px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
 
-<div class="box">
-    <h1>Domain Key</h1>
-
-    <input type="text" id="domain" placeholder="example.com">
-    <button onclick="checkDomain()">Yoxla</button>
-
-    <div id="result"></div>
-</div>
-
-<script>
-function checkDomain() {
-    let domain = document.getElementById("domain").value;
-
-    if (!domain) {
-        document.getElementById("result").innerHTML = "Domen daxil et!";
-        return;
-    }
-
-    fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://" + domain))
-        .then(response => {
-            if (response.ok) {
-                document.getElementById("result").innerHTML = "❌ Domen istifadə olunur!";
-            } else {
-                document.getElementById("result").innerHTML = "✔️ Domen boşdur!";
-            }
-        })
-        .catch(() => {
-            document.getElementById("result").innerHTML = "✔️ Domen boşdur!";
-        });
-}
-</script>
-
-</body>
-</html>
+        .title {
+            font-size: 70px;
+            font-weight: 900;
+            margin-top: 120px;
+            color: #5c00e6;
+            text-shadow:
+                0px 0px 10px #5c00e6,
+                0px 0px 20px #330080,
+                4px 4px 0px #000,
+                -4px -4px
