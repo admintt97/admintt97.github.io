@@ -3,49 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domain Checker</title>
+    <title>Domain Key</title>
     <style>
         body {
-            background: #f4f4f4;
             font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
             text-align: center;
-            padding: 50px;
+            padding-top: 80px;
         }
-        .box {
-            background: white;
-            padding: 20px;
-            width: 90%;
-            max-width: 400px;
-            margin: auto;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        h1 {
+            font-size: 60px;
+            font-weight: 900;
+            color: #0af;
+            text-shadow: 0 0 20px #0af, 0 0 40px #08c, 0 0 80px #07a;
         }
-        input, button {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
+        input {
+            padding: 12px;
+            width: 250px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
         }
         button {
-            background: black;
-            color: white;
+            padding: 12px 20px;
+            background: #0af;
+            color: #fff;
+            font-size: 18px;
             border: none;
-            cursor: pointer;
+            border-radius: 8px;
+            margin-left: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 22px;
         }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h2>Domain Checker</h2>
-        <input id="domain" type="text" placeholder="Məs: example.com">
-        <button onclick="checkDomain()">Yoxla</button>
-        <p id="result"></p>
-    </div>
 
-    <script>
-        function checkDomain() {
-            let domain = document.getElementById("domain").value.trim();
-            if (!domain) {
-                document.getElementById("result").innerText = "Domain daxil edin.";
-                return;
-            }
-            document.getElementById("result").innerText = "Y
+<h1>DOMAIN KEY</h1>
+
+<input type="text" id="domain" placeholder="example.com">
+<button onclick="checkDomain()">Yoxla</button>
+
+<div id="result"></div>
+
+<script>
+function checkDomain() {
+    const domain = document.getElementById("domain").value.trim();
+    if (!domain) {
+        document.getElementById("result").innerText = "Domain daxil edin!";
+        return;
+    }
+
+    fetch(`https://api.domainsdb.info/v1/domains/search?domain=${domain}`)
+        .then
