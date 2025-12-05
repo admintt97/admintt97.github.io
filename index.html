@@ -1,189 +1,119 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Admin Panel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generate Key</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0a0a0a;
-            color: white;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: url("arkaplan.jpg") no-repeat center center fixed;
+        background-size: cover;
+    }
 
-        .page {
-            display: none;
-            padding: 20px;
-        }
+    .overlay {
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.55);
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
 
-        .active {
-            display: block;
-        }
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 430px;
+        background: rgba(255,255,255,0.14);
+        padding: 25px;
+        border-radius: 14px;
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(255,255,255,0.3);
+    }
 
-        img {
-            width: 100%;
-            max-width: 350px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px #00aaff;
-        }
+    label {
+        font-size: 20px;
+        color: white;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 6px;
+    }
 
-        h1 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            text-shadow: 0 0 15px #00aaff;
-        }
+    select, input {
+        width: 100%;
+        padding: 14px;
+        border-radius: 10px;
+        border: none;
+        margin-bottom: 18px;
+        font-size: 18px;
+    }
 
-        input {
-            width: 85%;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border: none;
-            font-size: 18px;
-            outline: none;
-            background-color: #1a1a1a;
-            color: white;
-            box-shadow: 0 0 10px #0033ff;
-        }
+    .price-box {
+        width: 100%;
+        background: white;
+        padding: 14px;
+        border-radius: 10px;
+        font-size: 22px;
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
 
-        select {
-            width: 85%;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border: none;
-            font-size: 18px;
-            background-color: #1a1a1a;
-            color: white;
-            box-shadow: 0 0 10px #0033ff;
-        }
+    .btn {
+        width: 100%;
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 15px;
+        font-size: 22px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: bold;
+    }
 
-        button {
-            width: 85%;
-            padding: 15px;
-            margin-top: 10px;
-            border-radius: 10px;
-            border: none;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            background: linear-gradient(90deg, #0011ff, #00ccff);
-            color: white;
-            box-shadow: 0 0 20px #0077ff;
-        }
+    .btn:hover {
+        background: #0056d2;
+    }
+</style>
 
-        button:hover {
-            opacity: 0.8;
-        }
-
-        .keyBox {
-            width: 85%;
-            padding: 15px;
-            margin-top: 15px;
-            background-color: #111;
-            border-radius: 10px;
-            font-size: 20px;
-            word-break: break-all;
-            box-shadow: 0 0 20px #00ccff;
-        }
-    </style>
 </head>
 <body>
 
-<!-- LOGIN -->
-<div id="loginPage" class="page active">
-    <h1>Giriş</h1>
+<div class="overlay"></div>
 
-    <img src="https://i.imgur.com/1c1vA5m.jpeg">
-
-    <input id="loginUser" placeholder="Kullanıcı Adı">
-    <input id="loginPass" placeholder="Şifre" type="password">
-
-    <button onclick="login()">Giriş Yap</button>
-</div>
-
-<!-- 1. SAYFA -->
-<div id="page1" class="page">
-    <h1>1. Sayfa</h1>
-
-    <img src="https://i.imgur.com/1c1vA5m.jpeg">
-
-    <button onclick="goPage(2)">2. Sayfaya Geç</button>
-</div>
-
-<!-- 2. SAYFA -->
-<div id="page2" class="page">
-    <h1>2. Sayfa</h1>
-
-    <img src="https://i.imgur.com/hc3dURF.jpeg">
-
-    <select id="keyType">
-        <option value="free">Free Key</option>
-        <option value="1h">1 Saat - 1$</option>
-        <option value="1d">1 Gün - 3$</option>
-        <option value="7d">1 Hafta - 12$</option>
-        <option value="1m">1 Ay - 25$</option>
+<div class="container">
+    
+    <label>Games</label>
+    <select>
+        <option>PUBG Mobile</option>
+        <option>BGMI</option>
+        <option>Free Fire</option>
     </select>
 
-    <button onclick="generateKey()">KEY ÜRET</button>
+    <label>Duration Of Key</label>
+    <select>
+        <option>5 Hour — ₹80/Device</option>
+        <option>10 Hour — ₹120/Device</option>
+        <option>24 Hour — ₹200/Device</option>
+    </select>
 
-    <div id="result" class="keyBox"></div>
+    <label>Max Devices</label>
+    <input type="number" value="1">
 
-    <button onclick="goPage(3)">3. Sayfaya Geç</button>
+    <label>Enter Bulk Key Number</label>
+    <input type="number" value="1">
+
+    <div class="price-box">₹ 80</div>
+
+    <button class="btn">GENERATE KEY</button>
+
 </div>
-
-<!-- 3. SAYFA -->
-<div id="page3" class="page">
-    <h1>3. Sayfa</h1>
-
-    <img src="https://i.imgur.com/ZptKVkE.jpeg">
-
-    <div class="keyBox">Buraya özel key veya mesaj ekleyebilirsin</div>
-
-    <button onclick="goPage(1)">Başa Dön</button>
-</div>
-
-<script>
-function goPage(n) {
-    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-    document.getElementById("page" + n).classList.add("active");
-}
-
-function login() {
-    let u = document.getElementById("loginUser").value;
-    let p = document.getElementById("loginPass").value;
-
-    if (u === "Admin97" && p === "Admin1997") {
-        goPage(1);
-    } else {
-        alert("Yanlış bilgiler!");
-    }
-}
-
-function randomLetters(len) {
-    let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let out = "";
-    for (let i = 0; i < len; i++) out += chars[Math.floor(Math.random() * chars.length)];
-    return out;
-}
-
-function generateKey() {
-    let t = document.getElementById("keyType").value;
-    let code = "KEY-";
-
-    if (t === "free") code += "FREE-" + randomLetters(6);
-    if (t === "1h") code += "1H-" + randomLetters(6);
-    if (t === "1d") code += "1D-" + randomLetters(6);
-    if (t === "7d") code += "7D-" + randomLetters(6);
-    if (t === "1m") code += "1M-" + randomLetters(6);
-
-    document.getElementById("result").innerHTML = code;
-}
-</script>
 
 </body>
 </html>
