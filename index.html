@@ -8,7 +8,7 @@
     
     <style>
         /* ======================================================= */
-        /* === CSS STİLLERİ === */
+        /* === CSS STİLLERİ (Yeni Yönetim ve Fiyat Düzeltmeleri Dahil) === */
         /* ======================================================= */
         
         /* Genel Ayarlar ve SPA Yönetimi */
@@ -63,108 +63,73 @@
         .bg-page-2 { background-image: url('asker-miğfer.jpg'); }
         .bg-page-3b { background-image: url('mumya-karakter.jpg'); opacity: 0.5; }
 
-        /* Başlık Stilleri */
-        .domain-title { 
-            font-size: 3em;
-            font-weight: 700;
-            letter-spacing: 5px;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-            margin-bottom: 50px;
-            border-top: 2px solid rgba(255, 215, 0, 0.7);
-            border-bottom: 2px solid rgba(255, 215, 0, 0.7);
-            padding: 10px 0;
-        }
-        .pubg-logo-text { 
-            font-size: 5em;
-            font-weight: 700;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
-            margin-bottom: 20px;
-            border: 5px solid #fff;
-            padding: 5px 20px;
-            letter-spacing: 5px;
-            background-color: rgba(0, 0, 0, 0.3);
-        }
-
-        /* Sayfa 1: Giriş Formu Çerçevesi */
-        .form-frame {
-            background: rgba(0, 0, 0, 0.5);
-            border: 3px solid #ffd700;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-            padding: 20px 40px;
-            border-radius: 5px;
-            display: inline-block;
-        }
+        /* Başlık ve Buton Stilleri (Kısaltıldı) */
+        .domain-title { font-size: 3em; font-weight: 700; letter-spacing: 5px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); margin-bottom: 50px; border-top: 2px solid rgba(255, 215, 0, 0.7); border-bottom: 2px solid rgba(255, 215, 0, 0.7); padding: 10px 0; }
+        .pubg-logo-text { font-size: 5em; font-weight: 700; color: #fff; text-shadow: 0 0 10px rgba(0, 0, 0, 0.9); margin-bottom: 20px; border: 5px solid #fff; padding: 5px 20px; letter-spacing: 5px; background-color: rgba(0, 0, 0, 0.3); }
+        .form-frame { background: rgba(0, 0, 0, 0.5); border: 3px solid #ffd700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); padding: 20px 40px; border-radius: 5px; display: inline-block; }
+        .login-input { width: 250px; padding: 15px; margin-bottom: 10px; background-color: rgba(40, 40, 40, 0.9); color: #ffd700; font-size: 1.2em; font-weight: 400; border: 2px solid #ffd700; border-radius: 3px; box-sizing: border-box; text-align: center; font-family: 'Orbitron', sans-serif; }
+        .login-input::placeholder { color: #e0e0e0; opacity: 1; text-align: center; }
         
-        /* Giriş alanlarının stili */
-        .login-input {
-            width: 250px;
-            padding: 15px;
-            margin-bottom: 10px;
-            background-color: rgba(40, 40, 40, 0.9);
-            color: #ffd700; 
-            font-size: 1.2em;
-            font-weight: 400;
-            border: 2px solid #ffd700;
-            border-radius: 3px;
-            box-sizing: border-box;
-            text-align: center; 
-            font-family: 'Orbitron', sans-serif;
+        /* Tüm Butonlar */
+        .action-button, .key-button, .generate-button, .manage-button {
+            display: block; width: 250px; padding: 15px 0; margin: 15px auto 0 auto; text-decoration: none; font-size: 1.5em; font-weight: 700; border: none; border-radius: 3px; cursor: pointer; transition: background-color 0.3s, transform 0.3s; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.6); letter-spacing: 2px; background-color: #ffd700; color: #000; font-family: 'Orbitron', sans-serif;
         }
-        .login-input::placeholder {
-            color: #e0e0e0; 
-            opacity: 1; 
-            text-align: center;
-        }
+        .key-button { width: 300px; font-size: 1.8em; margin: 10px auto; background-color: #e5b300; border: 2px solid #fff8d7; }
+        .action-button:hover, .key-button:hover, .generate-button:hover, .manage-button:hover { background-color: #ffda47; transform: translateY(-2px); }
 
-        .action-button, .key-button, .generate-button, .generate-free-button {
-            display: block;
-            width: 250px; 
-            padding: 15px 0;
-            margin: 15px auto 0 auto;
-            text-decoration: none;
-            font-size: 1.5em;
-            font-weight: 700;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.6);
-            letter-spacing: 2px;
-            background-color: #ffd700;
-            color: #000;
-            font-family: 'Orbitron', sans-serif;
-        }
-        .key-button { 
-             width: 300px;
-             font-size: 1.8em;
-             margin: 10px auto;
-             background-color: #e5b300;
-             border: 2px solid #fff8d7;
-        }
-        .action-button:hover, .key-button:hover, .generate-button:hover, .generate-free-button:hover {
-            background-color: #ffda47;
-            transform: translateY(-2px);
-        }
-
-        /* Sayfa 3A ve 3B form stilleri önceki gibi devam ediyor... */
+        /* Yönetim Butonları */
+        .manage-button { background-color: #555; color: #ffd700; font-size: 1em; width: 100%; margin-top: 10px; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+        .delete-button { background-color: #a00; color: #fff; } /* Kırmızı */
+        .deactive-button { background-color: #0090ff; color: #fff; } /* Mavi */
+        
+        /* Sayfa 3A/3B Ortak ve 3A Stilleri */
         .form-wrapper { align-items: center; min-height: 100vh; padding: 20px; }
-        .premium-keys-container { width: 350px; background-color: rgba(10, 10, 10, 0.95); border: 4px solid #ffd700; border-radius: 8px; box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); padding: 30px 20px; position: relative; text-align: left; }
+        .premium-keys-container { width: 350px; background-color: rgba(10, 10, 10, 0.95); border: 4px solid #ffd700; box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); padding: 30px 20px; position: relative; text-align: left; }
         .premium-header { position: absolute; top: 0; right: 0; background-color: #ffd700; color: #000; padding: 8px 15px; font-size: 0.9em; font-weight: 700; border-bottom-left-radius: 8px; }
         .section-title { color: #ffd700; text-align: center; margin-bottom: 25px; font-size: 1.5em; border-bottom: 1px solid rgba(255, 215, 0, 0.5); padding-bottom: 10px; letter-spacing: 1px; }
         .form-row label { display: block; font-size: 0.8em; color: #ccc; margin-bottom: 5px; font-weight: 700; }
         .form-input, select.form-input { width: 100%; padding: 10px; background-color: #333; border: 1px solid #ffd700; color: #fff; font-size: 1em; box-sizing: border-box; border-radius: 3px; font-family: 'Orbitron', sans-serif; }
-        .duration-options label { display: inline-block; color: #ffd700; margin-right: 15px; font-size: 0.9em; font-weight: 400; }
         .total-price-box { text-align: center; padding: 15px; margin: 25px 0; background-color: #ffd700; color: #000; font-weight: 700; font-size: 1.2em; border-radius: 3px; box-shadow: 0 0 10px rgba(255, 215, 0, 0.8); }
         .admin-output { text-align: center; padding: 10px; background-color: #555; color: #fff; font-size: 0.9em; border-radius: 3px; }
 
+        /* --- SAYFA 3A DURATION STİLLERİ (GÜNCELLENDİ) --- */
+        .duration-options-list { 
+            border: 1px solid #ffd700;
+            background-color: #1a1a1a;
+        }
+        .duration-item-premium {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            border-bottom: 1px solid #444;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 1.1em;
+            color: #ccc;
+        }
+        .duration-item-premium:hover {
+            background-color: #444;
+        }
+        .duration-item-premium.selected {
+            background-color: #ffd700;
+            color: #000;
+            font-weight: 700;
+        }
+        .duration-price {
+            font-weight: 700;
+        }
+
+        /* --- SAYFA 3B STİLLERİ (Önceki gibi) --- */
         .free-keys-container { width: 320px; background-color: #1a1a1a; border: 1px solid #ffd700; border-radius: 5px; box-shadow: 0 0 25px rgba(255, 215, 0, 0.4); padding: 20px; position: relative; text-align: center; }
         .top-corner-header { position: absolute; top: -15px; left: -15px; background-color: #00bcd4; color: #000; padding: 10px 15px; font-size: 1em; font-weight: 700; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 188, 212, 0.8); clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 80% 100%, 0% 100%); }
         .main-title { color: #ffd700; font-size: 1.5em; margin-bottom: 20px; margin-top: 15px; }
-        .duration-section { border: 1px solid #ffd700; padding: 15px; margin-bottom: 20px; background-color: #0d0d0d; }
-        .duration-item { color: #ffd700; font-size: 0.9em; text-align: left; margin-bottom: 10px; font-weight: 700; }
-        .duration-select-box { text-align: left; padding: 10px; margin-bottom: 5px; background-color: #333; color: #ccc; border: 1px solid #444; cursor: pointer; font-size: 0.9em; }
-        .active-duration { background-color: #00bcd4; color: #000; border-color: #00bcd4; box-shadow: 0 0 5px rgba(0, 188, 212, 0.8); }
+        .duration-section { padding: 0; margin-bottom: 20px; background-color: #0d0d0d; }
+        .duration-item-container { border-top: 1px solid #222; padding: 15px 10px; background-color: #1a1a1a; color: #ffd700; font-size: 0.9em; text-align: left; font-weight: 400; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #000; }
+        .duration-item-container:first-child { border-top: none; }
+        .duration-item-container:last-child { border-bottom: none; }
+        .duration-item-container.active { background-color: #00bcd4; color: #000; font-weight: 700; }
+        .duration-item-container .arrow-icon { font-size: 1.2em; font-weight: 900; }
         .key-output { text-align: center; padding: 10px; background-color: #555; color: #fff; font-size: 0.9em; border-radius: 3px; border: 1px solid #555; }
 
         .back-button {
@@ -187,7 +152,6 @@
             <div class="form-frame">
                 
                 <input type="text" id="username" class="login-input" placeholder="LOGIN">
-                
                 <input type="password" id="password" class="login-input" placeholder="PASSWORD">
                 
                 <div id="login-message" style="color: #ff4747; margin-top: 5px; font-size: 0.9em; height: 18px; font-weight: 700;"></div>
@@ -236,31 +200,51 @@
 
                     <div class="form-row">
                         <label>DURATION</label>
-                        <div class="duration-options">
-                            <input type="radio" name="duration" id="a-d1" checked><label for="a-d1">-- $1</label>
-                            <input type="radio" name="duration" id="a-d3"><label for="a-d3">1 Day -- $3</label>
-                            <input type="radio" name="duration" id="a-d12"><label for="a-d12">1 Week -- $12</label>
+                        <div class="duration-options-list" id="premium-duration-list">
+                            <div class="duration-item-premium selected" data-price="1" onclick="selectPremiumDuration(this)">
+                                <span>--</span>
+                                <span class="duration-price">$1</span>
+                            </div>
+                            <div class="duration-item-premium" data-price="3" onclick="selectPremiumDuration(this)">
+                                <span>1 Day</span>
+                                <span class="duration-price">$3</span>
+                            </div>
+                            <div class="duration-item-premium" data-price="12" onclick="selectPremiumDuration(this)">
+                                <span>1 Week</span>
+                                <span class="duration-price">$12</span>
+                            </div>
+                            <div class="duration-item-premium" data-price="30" onclick="selectPremiumDuration(this)">
+                                <span>1 Month</span>
+                                <span class="duration-price">$30</span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <label>MAX DEVICES</label>
-                        <input type="number" class="form-input" value="1">
+                        <input type="number" id="max-devices-premium" class="form-input" value="1" min="1" onchange="updateTotalPrice()">
                     </div>
                     <div class="form-row">
                         <label>ENTER BULK KEY NUMBER</label>
-                        <input type="number" class="form-input" value="1">
+                        <input type="number" id="bulk-key-number-premium" class="form-input" value="1" min="1" onchange="updateTotalPrice()">
                     </div>
 
                     <div class="total-price-box">
-                        TOTAL PRICE: <span>$5</span>
+                        TOTAL PRICE: $<span id="total-price-span">1</span>
                     </div>
 
-                    <button type="button" onclick="generateKey('premium')" class="generate-button">
+                    <button type="button" onclick="generateKey('premium')" class="generate-button" style="width: 100%; margin-top: 0;">
                         GENERATE PREMIUM KEY
                     </button>
                     
-                    <div id="premium-key-output" class="admin-output">Admin97-qzwxye</div>
+                    <button type="button" onclick="manageKey('premium', 'deactive')" class="manage-button deactive-button">
+                        DEACTIVE KEY
+                    </button>
+                    <button type="button" onclick="manageKey('premium', 'delete')" class="manage-button delete-button">
+                        DELETE KEY
+                    </button>
+
+                    <div id="premium-key-output" class="admin-output" style="margin-top: 10px;">Admin97-qzwxye</div>
                 </form>
             </div>
         </div>
@@ -277,24 +261,40 @@
                 <form class="key-form" onsubmit="event.preventDefault()">
                     
                     <div class="duration-section">
-                        <div class="duration-item">DURATION</div>
-                        <div class="duration-select-box active-duration">3 Hours</div>
-                        <div class="duration-select-box">3 Day</div>
-                        <div class="duration-select-box">3 Day</div>
-                        <div class="duration-select-box">1 Month</div>
-                        <div class="duration-select-box">3 Hours</div>
-                    </div>
-
-                    <div class="input-row">
-                        <label>DURATION</label>
-                        <input type="text" class="form-input" value="2 Month">
+                        <div class="duration-item-container active">
+                            <span>DURATION</span>
+                            <span class="arrow-icon">^</span>
+                        </div>
+                        <div class="duration-item-container">
+                            <span>3 Hours (saat)</span>
+                            <span class="arrow-icon">^</span>
+                        </div>
+                        <div class="duration-item-container">
+                            <span>1 Day (gün)</span>
+                            <span class="arrow-icon">^</span>
+                        </div>
+                        <div class="duration-item-container">
+                            <span>1 Week (hafta)</span>
+                            <span class="arrow-icon">^</span>
+                        </div>
+                        <div class="duration-item-container">
+                            <span>1 Month (Ay)</span>
+                            <span class="arrow-icon">^</span>
+                        </div>
                     </div>
                     
-                    <button type="button" onclick="generateKey('free')" class="generate-free-button">
+                    <button type="button" onclick="generateKey('free')" class="generate-button" style="width: 100%; margin: 15px 0 5px 0;">
                         GENERATE FREE KEY
                     </button>
+
+                    <button type="button" onclick="manageKey('free', 'deactive')" class="manage-button deactive-button" style="width: 100%;">
+                        DEACTIVE KEY
+                    </button>
+                    <button type="button" onclick="manageKey('free', 'delete')" class="manage-button delete-button" style="width: 100%;">
+                        DELETE KEY
+                    </button>
                     
-                    <div id="free-key-output" class="key-output">1Dfree-rtyujk</div>
+                    <div id="free-key-output" class="key-output" style="width: 100%; box-sizing: border-box; margin-top: 10px;">1Dfree-rtyujk</div>
                 </form>
             </div>
         </div>
@@ -328,6 +328,11 @@
             bgOverlay.classList.add(pageConfigs[targetPage]); 
 
             currentPage = targetPage;
+            
+            // Sayfa 3A'ya geçildiğinde fiyatı güncelle
+            if (targetPage === 'page-3a') {
+                updateTotalPrice();
+            }
         }
 
         // GİRİŞ KONTROL FONKSİYONU
@@ -341,18 +346,50 @@
 
             if (username === CORRECT_USERNAME && password === CORRECT_PASSWORD) {
                 messageEl.textContent = "";
-                changePage('page-2'); // Başarılı, 2. sayfaya geç
+                changePage('page-2'); 
             } else {
                 messageEl.textContent = "Hatalı Giriş! Lütfen bilgileri kontrol edin.";
             }
         }
 
-        // YENİ ANAHTAR ÜRETME FONKSİYONU
+        // YENİ: PREMIUM DURATION SEÇİM FONKSİYONU
+        function selectPremiumDuration(selectedElement) {
+            const list = document.getElementById('premium-duration-list');
+            const items = list.querySelectorAll('.duration-item-premium');
+
+            // Tüm seçimleri kaldır
+            items.forEach(item => item.classList.remove('selected'));
+
+            // Seçileni işaretle
+            selectedElement.classList.add('selected');
+            
+            // Fiyatı güncelle
+            updateTotalPrice();
+        }
+
+        // YENİ: TOPLAM FİYAT GÜNCELLEME FONKSİYONU
+        function updateTotalPrice() {
+            // Seçili olan sürenin fiyatını bul
+            const selectedItem = document.querySelector('.duration-item-premium.selected');
+            const durationPrice = selectedItem ? parseFloat(selectedItem.getAttribute('data-price')) : 0;
+
+            // Diğer giriş değerlerini al
+            const maxDevices = parseInt(document.getElementById('max-devices-premium').value) || 1;
+            const bulkNumber = parseInt(document.getElementById('bulk-key-number-premium').value) || 1;
+
+            // Toplam fiyatı hesapla (Basit bir çarpım)
+            const totalPrice = durationPrice * maxDevices * bulkNumber;
+
+            // Fiyatı ekranda göster
+            document.getElementById('total-price-span').textContent = totalPrice.toFixed(0);
+        }
+
+
+        // ANAHTAR ÜRETME FONKSİYONU
         function generateKey(type) {
             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
             let result = '';
             
-            // Anahtar uzunluğunu ve formatını belirle
             const length = 10; 
             const prefix = (type === 'premium') ? 'ADM97-' : 'FREE-';
             
@@ -362,15 +399,29 @@
             
             const finalKey = prefix + result;
 
-            // Anahtarı ilgili alana yazdır
             if (type === 'premium') {
                 document.getElementById('premium-key-output').textContent = finalKey;
+                document.getElementById('premium-key-output').style.backgroundColor = '#555';
             } else if (type === 'free') {
                 document.getElementById('free-key-output').textContent = finalKey;
+                document.getElementById('free-key-output').style.backgroundColor = '#555';
+            }
+        }
+
+        // ANAHTAR YÖNETİM FONKSİYONU
+        function manageKey(type, action) {
+            const outputId = (type === 'premium') ? 'premium-key-output' : 'free-key-output';
+            const outputElement = document.getElementById(outputId);
+            
+            if (action === 'delete') {
+                outputElement.textContent = `[KEY DELETED] - ${new Date().toLocaleTimeString('tr-TR')}`;
+                outputElement.style.backgroundColor = '#a00'; 
+            } else if (action === 'deactive') {
+                outputElement.textContent = `[KEY DEACTIVATED] - ${new Date().toLocaleTimeString('tr-TR')}`;
+                outputElement.style.backgroundColor = '#0090ff'; 
             }
         }
         
-        // İlk yüklemede arka planı ayarla
         document.addEventListener('DOMContentLoaded', () => {
             changePage('page-1');
         });
