@@ -8,15 +8,9 @@
     
     <style>
         /* ======================================================= */
-        /* === TÜM CSS KODLARI BURAYA GELECEK === */
+        /* === CSS STİLLERİ === */
         /* ======================================================= */
         
-        /* Arka plan görseli için placeholder isimler: 
-           - altin-karakter.jpg (Sayfa 1)
-           - asker-miğfer.jpg (Sayfa 2, 3A)
-           - mumya-karakter.jpg (Sayfa 3B) 
-        */
-
         /* Genel Ayarlar ve SPA Yönetimi */
         body {
             margin: 0;
@@ -35,12 +29,15 @@
 
         /* Tüm Sayfa İçeriklerinin Kapsayıcısı */
         .page-content {
-            display: none; /* Varsayılan olarak tüm sayfaları gizle */
+            display: none; 
             animation: fadeIn 0.5s ease-out;
             z-index: 10;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
         }
         .page-content.active {
-            display: flex; /* Aktif olanı göster */
+            display: flex; 
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -61,13 +58,13 @@
             transition: background-image 0.5s, opacity 0.5s;
         }
         
-        /* --- ARKA PLAN GÖRSELLERİ (JavaScript tarafından atanacak) --- */
+        /* --- ARKA PLAN GÖRSELLERİ --- */
         .bg-page-1 { background-image: url('altin-karakter.jpg'); }
         .bg-page-2 { background-image: url('asker-miğfer.jpg'); }
         .bg-page-3b { background-image: url('mumya-karakter.jpg'); opacity: 0.5; }
 
         /* Başlık Stilleri */
-        .domain-title { /* Sayfa 1 Başlık */
+        .domain-title { 
             font-size: 3em;
             font-weight: 700;
             letter-spacing: 5px;
@@ -77,7 +74,7 @@
             border-bottom: 2px solid rgba(255, 215, 0, 0.7);
             padding: 10px 0;
         }
-        .pubg-logo-text { /* Sayfa 2 Başlık */
+        .pubg-logo-text { 
             font-size: 5em;
             font-weight: 700;
             color: #fff;
@@ -89,7 +86,7 @@
             background-color: rgba(0, 0, 0, 0.3);
         }
 
-        /* Sayfa 1: Giriş Formu */
+        /* Sayfa 1: Giriş Formu Çerçevesi */
         .form-frame {
             background: rgba(0, 0, 0, 0.5);
             border: 3px solid #ffd700;
@@ -98,23 +95,31 @@
             border-radius: 5px;
             display: inline-block;
         }
-        .input-box {
+        
+        /* Giriş alanlarının stili */
+        .login-input {
             width: 250px;
-            padding: 15px 0;
+            padding: 15px;
             margin-bottom: 10px;
             background-color: rgba(40, 40, 40, 0.9);
-            color: #e0e0e0;
+            color: #ffd700; 
             font-size: 1.2em;
             font-weight: 400;
             border: 2px solid #ffd700;
             border-radius: 3px;
-            text-align: left;
-            padding-left: 15px;
             box-sizing: border-box;
+            text-align: center; 
+            font-family: 'Orbitron', sans-serif;
         }
+        .login-input::placeholder {
+            color: #e0e0e0; 
+            opacity: 1; 
+            text-align: center;
+        }
+
         .action-button, .key-button, .generate-button, .generate-free-button {
             display: block;
-            width: 250px; /* Genişlikler farklı sayfalarda değişebilir */
+            width: 250px; 
             padding: 15px 0;
             margin: 15px auto 0 auto;
             text-decoration: none;
@@ -130,7 +135,7 @@
             color: #000;
             font-family: 'Orbitron', sans-serif;
         }
-        .key-button { /* Sayfa 2 butonları daha büyük */
+        .key-button { 
              width: 300px;
              font-size: 1.8em;
              margin: 10px auto;
@@ -142,92 +147,31 @@
             transform: translateY(-2px);
         }
 
-        /* Sayfa 3A ve 3B Ortak Kapsayıcı */
-        .form-wrapper {
-            /* SPA'da içeriği ortalamak için kullanılır */
-            align-items: center; 
-            min-height: 100vh;
-            padding: 20px;
-        }
+        /* Sayfa 3A ve 3B form stilleri önceki gibi devam ediyor... */
+        .form-wrapper { align-items: center; min-height: 100vh; padding: 20px; }
+        .premium-keys-container { width: 350px; background-color: rgba(10, 10, 10, 0.95); border: 4px solid #ffd700; border-radius: 8px; box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); padding: 30px 20px; position: relative; text-align: left; }
+        .premium-header { position: absolute; top: 0; right: 0; background-color: #ffd700; color: #000; padding: 8px 15px; font-size: 0.9em; font-weight: 700; border-bottom-left-radius: 8px; }
+        .section-title { color: #ffd700; text-align: center; margin-bottom: 25px; font-size: 1.5em; border-bottom: 1px solid rgba(255, 215, 0, 0.5); padding-bottom: 10px; letter-spacing: 1px; }
+        .form-row label { display: block; font-size: 0.8em; color: #ccc; margin-bottom: 5px; font-weight: 700; }
+        .form-input, select.form-input { width: 100%; padding: 10px; background-color: #333; border: 1px solid #ffd700; color: #fff; font-size: 1em; box-sizing: border-box; border-radius: 3px; font-family: 'Orbitron', sans-serif; }
+        .duration-options label { display: inline-block; color: #ffd700; margin-right: 15px; font-size: 0.9em; font-weight: 400; }
+        .total-price-box { text-align: center; padding: 15px; margin: 25px 0; background-color: #ffd700; color: #000; font-weight: 700; font-size: 1.2em; border-radius: 3px; box-shadow: 0 0 10px rgba(255, 215, 0, 0.8); }
+        .admin-output { text-align: center; padding: 10px; background-color: #555; color: #fff; font-size: 0.9em; border-radius: 3px; }
 
-        /* --- SAYFA 3A STİLLERİ (PREMIUM KEYS) --- */
-        .premium-keys-container {
-            width: 350px;
-            background-color: rgba(10, 10, 10, 0.95);
-            border: 4px solid #ffd700;
-            border-radius: 8px;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-            padding: 30px 20px;
-            position: relative;
-            text-align: left;
-        }
-        .premium-header {
-            position: absolute;
-            top: 0; right: 0;
-            background-color: #ffd700; color: #000;
-            padding: 8px 15px; font-size: 0.9em; font-weight: 700;
-            border-bottom-left-radius: 8px;
-        }
-        .section-title {
-            color: #ffd700; text-align: center; margin-bottom: 25px;
-            font-size: 1.5em; border-bottom: 1px solid rgba(255, 215, 0, 0.5);
-            padding-bottom: 10px; letter-spacing: 1px;
-        }
-        .form-row label {
-            display: block; font-size: 0.8em; color: #ccc; margin-bottom: 5px; font-weight: 700;
-        }
-        .form-input, select.form-input {
-            width: 100%; padding: 10px; background-color: #333;
-            border: 1px solid #ffd700; color: #fff; font-size: 1em; box-sizing: border-box;
-            border-radius: 3px; font-family: 'Orbitron', sans-serif;
-        }
-        .duration-options label {
-            display: inline-block; color: #ffd700; margin-right: 15px; font-size: 0.9em; font-weight: 400;
-        }
-        .total-price-box {
-            text-align: center; padding: 15px; margin: 25px 0;
-            background-color: #ffd700; color: #000; font-weight: 700; font-size: 1.2em;
-            border-radius: 3px; box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-        }
-        .admin-output {
-            text-align: center; padding: 10px; background-color: #555;
-            color: #fff; font-size: 0.9em; border-radius: 3px;
-        }
+        .free-keys-container { width: 320px; background-color: #1a1a1a; border: 1px solid #ffd700; border-radius: 5px; box-shadow: 0 0 25px rgba(255, 215, 0, 0.4); padding: 20px; position: relative; text-align: center; }
+        .top-corner-header { position: absolute; top: -15px; left: -15px; background-color: #00bcd4; color: #000; padding: 10px 15px; font-size: 1em; font-weight: 700; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 188, 212, 0.8); clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 80% 100%, 0% 100%); }
+        .main-title { color: #ffd700; font-size: 1.5em; margin-bottom: 20px; margin-top: 15px; }
+        .duration-section { border: 1px solid #ffd700; padding: 15px; margin-bottom: 20px; background-color: #0d0d0d; }
+        .duration-item { color: #ffd700; font-size: 0.9em; text-align: left; margin-bottom: 10px; font-weight: 700; }
+        .duration-select-box { text-align: left; padding: 10px; margin-bottom: 5px; background-color: #333; color: #ccc; border: 1px solid #444; cursor: pointer; font-size: 0.9em; }
+        .active-duration { background-color: #00bcd4; color: #000; border-color: #00bcd4; box-shadow: 0 0 5px rgba(0, 188, 212, 0.8); }
+        .key-output { text-align: center; padding: 10px; background-color: #555; color: #fff; font-size: 0.9em; border-radius: 3px; border: 1px solid #555; }
 
-        /* --- SAYFA 3B STİLLERİ (FREE KEYS) --- */
-        .free-keys-container {
-            width: 320px; background-color: #1a1a1a; border: 1px solid #ffd700;
-            border-radius: 5px; box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-            padding: 20px; position: relative; text-align: center;
-        }
-        .top-corner-header {
-            position: absolute; top: -15px; left: -15px;
-            background-color: #00bcd4; color: #000;
-            padding: 10px 15px; font-size: 1em; font-weight: 700;
-            border-radius: 5px; box-shadow: 0 0 10px rgba(0, 188, 212, 0.8);
-            clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 80% 100%, 0% 100%);
-        }
-        .main-title {
-            color: #ffd700; font-size: 1.5em; margin-bottom: 20px; margin-top: 15px;
-        }
-        .duration-section {
-            border: 1px solid #ffd700; padding: 15px; margin-bottom: 20px;
-            background-color: #0d0d0d;
-        }
-        .duration-item {
-            color: #ffd700; font-size: 0.9em; text-align: left; margin-bottom: 10px; font-weight: 700;
-        }
-        .duration-select-box {
-            text-align: left; padding: 10px; margin-bottom: 5px;
-            background-color: #333; color: #ccc; border: 1px solid #444; cursor: pointer; font-size: 0.9em;
-        }
-        .active-duration {
-            background-color: #00bcd4; color: #000; border-color: #00bcd4;
-            box-shadow: 0 0 5px rgba(0, 188, 212, 0.8);
-        }
-        .key-output {
-            text-align: center; padding: 10px; background-color: #333;
-            color: #fff; font-size: 1em; border-radius: 3px; border: 1px solid #555;
+        .back-button {
+            position: absolute; top: 10px; left: 10px; padding: 10px;
+            background-color: rgba(255, 215, 0, 0.2); color: #ffd700;
+            border: 1px solid #ffd700; border-radius: 5px; cursor: pointer;
+            z-index: 15; font-weight: 700; font-family: 'Orbitron', sans-serif;
         }
     </style>
 </head>
@@ -242,10 +186,13 @@
             
             <div class="form-frame">
                 
-                <div class="input-box">LOGIN</div>
-                <div class="input-box">PASSWORD</div>
+                <input type="text" id="username" class="login-input" placeholder="LOGIN">
                 
-                <button onclick="changePage('page-2')" class="action-button">
+                <input type="password" id="password" class="login-input" placeholder="PASSWORD">
+                
+                <div id="login-message" style="color: #ff4747; margin-top: 5px; font-size: 0.9em; height: 18px; font-weight: 700;"></div>
+
+                <button onclick="attemptLogin()" class="action-button">
                     LOGIN
                 </button>
                 
@@ -309,11 +256,11 @@
                         TOTAL PRICE: <span>$5</span>
                     </div>
 
-                    <button type="submit" class="generate-button">
+                    <button type="button" onclick="generateKey('premium')" class="generate-button">
                         GENERATE PREMIUM KEY
                     </button>
                     
-                    <div class="admin-output">Admin97-qzwxye</div>
+                    <div id="premium-key-output" class="admin-output">Admin97-qzwxye</div>
                 </form>
             </div>
         </div>
@@ -343,11 +290,11 @@
                         <input type="text" class="form-input" value="2 Month">
                     </div>
                     
-                    <button type="submit" class="generate-free-button">
+                    <button type="button" onclick="generateKey('free')" class="generate-free-button">
                         GENERATE FREE KEY
                     </button>
                     
-                    <div class="key-output">1Dfree-rtyujk</div>
+                    <div id="free-key-output" class="key-output">1Dfree-rtyujk</div>
                 </form>
             </div>
         </div>
@@ -358,34 +305,71 @@
         const pageConfigs = {
             'page-1': 'bg-page-1',
             'page-2': 'bg-page-2',
-            'page-3a': 'bg-page-2', // 3A ve 2. sayfa aynı arka planı kullanıyor
+            'page-3a': 'bg-page-2', 
             'page-3b': 'bg-page-3b'
         };
 
         const bgOverlay = document.getElementById('bg-overlay');
-        let currentPage = 'page-1'; // Başlangıç sayfası
+        let currentPage = 'page-1'; 
 
-        // Sayfayı değiştirme ve arka planı güncelleme fonksiyonu
+        // Sayfa Geçiş Fonksiyonu
         function changePage(targetPage) {
-            // Mevcut sayfayı gizle
             const currentEl = document.getElementById(currentPage);
             if (currentEl) {
                 currentEl.classList.remove('active');
             }
 
-            // Yeni sayfayı göster
             const targetEl = document.getElementById(targetPage);
             if (targetEl) {
                 targetEl.classList.add('active');
             }
 
-            // Arka planı değiştir
-            bgOverlay.className = 'background-image-overlay'; // Önceki sınıfları temizle
-            bgOverlay.classList.add(pageConfigs[targetPage]); // Yeni arka plan sınıfını ekle
+            bgOverlay.className = 'background-image-overlay'; 
+            bgOverlay.classList.add(pageConfigs[targetPage]); 
 
             currentPage = targetPage;
         }
 
+        // GİRİŞ KONTROL FONKSİYONU
+        function attemptLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageEl = document.getElementById('login-message');
+
+            const CORRECT_USERNAME = "Admin97";
+            const CORRECT_PASSWORD = "Admin1997";
+
+            if (username === CORRECT_USERNAME && password === CORRECT_PASSWORD) {
+                messageEl.textContent = "";
+                changePage('page-2'); // Başarılı, 2. sayfaya geç
+            } else {
+                messageEl.textContent = "Hatalı Giriş! Lütfen bilgileri kontrol edin.";
+            }
+        }
+
+        // YENİ ANAHTAR ÜRETME FONKSİYONU
+        function generateKey(type) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            
+            // Anahtar uzunluğunu ve formatını belirle
+            const length = 10; 
+            const prefix = (type === 'premium') ? 'ADM97-' : 'FREE-';
+            
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            
+            const finalKey = prefix + result;
+
+            // Anahtarı ilgili alana yazdır
+            if (type === 'premium') {
+                document.getElementById('premium-key-output').textContent = finalKey;
+            } else if (type === 'free') {
+                document.getElementById('free-key-output').textContent = finalKey;
+            }
+        }
+        
         // İlk yüklemede arka planı ayarla
         document.addEventListener('DOMContentLoaded', () => {
             changePage('page-1');
