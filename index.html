@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdminTT97 - PUBG Domain</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght=400;700&display=swap" rel="stylesheet">
     
     <style>
         /* ======================================================= */
-        /* === CSS STİLLERİ (TÜM GÖRSEL VE FONKSİYONEL HATALAR GİDERİLDİ) === */
+        /* === CSS STİLLERİ (GÜNCEL) === */
         /* ======================================================= */
         
         /* Genel Ayarlar ve SPA Yönetimi */
@@ -35,15 +35,15 @@
         .domain-title { font-size: 3em; font-weight: 700; letter-spacing: 5px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); margin-bottom: 50px; border-top: 2px solid rgba(255, 215, 0, 0.7); border-bottom: 2px solid rgba(255, 215, 0, 0.7); padding: 10px 0; }
         .pubg-logo-text { font-size: 5em; font-weight: 700; color: #fff; text-shadow: 0 0 10px rgba(0, 0, 0, 0.9); margin-bottom: 20px; border: 5px solid #fff; padding: 5px 20px; letter-spacing: 5px; background-color: rgba(0, 0, 0, 0.3); }
         
-        /* GENEL INPUT STİLİ */
+        /* GENEL INPUT VE SELECT STİLİ */
         .login-input, .form-input, select.form-input { 
             width: 100%; padding: 15px; margin-bottom: 10px; background-color: rgba(40, 40, 40, 0.9); 
             color: #ffd700; font-size: 1.2em; font-weight: 400; 
             border: 2px solid #ffd700; border-radius: 3px; box-sizing: border-box; 
             text-align: center; font-family: 'Orbitron', sans-serif;
-            -webkit-appearance: none; /* iOS için stil düzeltmesi */
-            -moz-appearance: none; /* Firefox için stil düzeltmesi */
-            appearance: none; /* Modern tarayıcılar için stil düzeltmesi */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
         .form-row label { display: block; font-size: 0.8em; color: #ccc; margin-bottom: 5px; font-weight: 700; }
 
@@ -52,20 +52,16 @@
             display: block; padding: 15px 0; margin: 15px auto 0 auto; text-decoration: none; 
             font-size: 1.5em; font-weight: 700; border: none; border-radius: 3px; cursor: pointer; 
             transition: background-color 0.3s, transform 0.3s; 
-            background-color: #ffaa00; /* Daha koyu altın */
+            background-color: #ffaa00; 
             color: #000; font-family: 'Orbitron', sans-serif;
-            
-            /* Altın Efektini Güçlendir */
             border: 1px solid #fff8e1;
             box-shadow: 0 0 15px rgba(255, 215, 0, 1.0), inset 0 0 8px rgba(255, 255, 100, 0.8); 
             text-shadow: 0 0 3px #000;
         }
         .key-button { width: 300px; font-size: 1.8em; margin: 10px auto; }
-        
-        /* Sayfa 3 Butonlarının Boyutunu Küçülttük */
         .generate-button { width: 100%; margin: 15px 0 5px 0; font-size: 1.2em; padding: 12px 0; } 
         
-        /* YÖNETİM BUTONLARI (Boyut Küçültüldü) */
+        /* YÖNETİM BUTONLARI */
         .manage-button { 
             font-size: 1em; width: 100%; margin-top: 5px; padding: 10px 0; 
             border-radius: 3px; cursor: pointer; transition: background-color 0.3s;
@@ -77,7 +73,7 @@
         .deactive-button { background-color: #0090ff; border: 1px solid #00c0ff; } 
         .delete-button:hover, .deactive-button:hover { transform: none; }
 
-        /* --- TÜM FORM ÇERÇEVELERİ (Sayfa 1, 2, 3A, 3B) --- */
+        /* --- TÜM FORM ÇERÇEVELERİ --- */
         .form-frame, .key-buttons-frame, .premium-keys-container, .free-keys-container {
             background: rgba(0, 0, 0, 0.7); 
             padding: 25px 40px; 
@@ -86,9 +82,8 @@
             border: 3px solid #ffaa00; 
             box-shadow: 0 0 25px rgba(255, 215, 0, 0.9), inset 0 0 10px rgba(255, 255, 150, 0.5);
         }
-        .key-buttons-frame { padding: 30px 50px; }
         .premium-keys-container { width: 350px; text-align: left; }
-        .free-keys-container { width: 320px; text-align: left; } /* İçeriği sola yasladık */
+        .free-keys-container { width: 320px; text-align: left; } 
 
         /* Başlıklar ve Fiyat Kutusu Stili */
         .premium-header { 
@@ -102,47 +97,19 @@
             box-shadow: 0 0 10px rgba(0, 188, 212, 0.8); 
         }
         .total-price-box { 
-            text-align: center; padding: 15px; margin: 25px 0; background-color: #ffd700; 
+            text-align: center; padding: 15px; margin: 25px 0 15px 0; background-color: #ffd700; 
             color: #000; font-weight: 700; font-size: 1.2em; border-radius: 3px; 
             box-shadow: 0 0 10px rgba(255, 215, 0, 0.8); 
         }
         
-        /* Sayfa 3A: Premium Süre Seçim Listesi (Görseldeki gibi liste formatına zorlandı) */
-        .duration-options-list { border: 1px solid #ffd700; background-color: #1a1a1a; margin-bottom: 10px; }
-        .duration-item-premium { 
-            padding: 10px; display: flex; justify-content: space-between; 
-            background-color: #333; border-bottom: 1px solid #444; cursor: pointer; 
-            transition: background-color 0.2s; font-size: 1.1em; color: #ccc; 
-            line-height: 1.5; /* Metin dikey olarak ortalandı */
-        }
-        .duration-item-premium:last-child { border-bottom: none; }
-        .duration-item-premium.selected { background-color: #ffd700; color: #000; font-weight: 700; }
-        .duration-price { color: #ffd700; font-weight: 700; }
-        .duration-item-premium.selected .duration-price { color: #000; }
-
-
-        /* Sayfa 3B: Free Key Açılır Menüsü (Tek Tuş İstediğiniz İçin) */
-        #free-duration-select {
-            width: 100%;
-            padding: 15px; 
-            background-color: #333;
-            color: #ffd700;
-            border: 2px solid #ffd700;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-            text-align: left;
-            cursor: pointer;
-            box-sizing: border-box;
-            border-radius: 3px;
-        }
-        
-        .admin-output { 
+        /* Anahtar Çıktısı ve Kullanım Sayacı Stili (YENİ) */
+        .key-output, .admin-output { 
             text-align: center; padding: 10px; background-color: #555; color: #fff; 
             font-size: 1em; border-radius: 3px; margin-top: 10px;
         }
-        .key-output { 
-            text-align: center; padding: 10px; background-color: #555; color: #fff; 
-            font-size: 1em; border-radius: 3px; margin-top: 10px;
+        .device-counter {
+            text-align: center; padding: 5px 0; background-color: #333; color: #ffd700; 
+            font-size: 0.9em; font-weight: 700; border-radius: 3px; margin-bottom: 5px;
         }
 
         .back-button {
@@ -213,24 +180,12 @@
 
                     <div class="form-row">
                         <label>DURATION</label>
-                        <div class="duration-options-list" id="premium-duration-list">
-                            <div class="duration-item-premium selected" data-price="1" onclick="selectPremiumDuration(this)">
-                                <span>--</span>
-                                <span class="duration-price">$1</span>
-                            </div>
-                            <div class="duration-item-premium" data-price="3" onclick="selectPremiumDuration(this)">
-                                <span>1 Day</span>
-                                <span class="duration-price">$3</span>
-                            </div>
-                            <div class="duration-item-premium" data-price="12" onclick="selectPremiumDuration(this)">
-                                <span>1 Week</span>
-                                <span class="duration-price">$12</span>
-                            </div>
-                            <div class="duration-item-premium" data-price="30" onclick="selectPremiumDuration(this)">
-                                <span>1 Month</span>
-                                <span class="duration-price">$30</span>
-                            </div>
-                        </div>
+                        <select id="premium-duration-select" class="form-input" onchange="updateTotalPrice()">
+                            <option value="1" data-price="1">-- ($1)</option>
+                            <option value="1Day" data-price="3">1 Day ($3)</option>
+                            <option value="1Week" data-price="12">1 Week ($12)</option>
+                            <option value="1Month" data-price="30">1 Month ($30)</option>
+                        </select>
                     </div>
 
                     <div class="form-row">
@@ -250,6 +205,8 @@
                         GENERATE PREMIUM KEY
                     </button>
                     
+                    <div id="premium-device-counter" class="device-counter">0 / 1</div>
+
                     <button type="button" onclick="manageKey('premium', 'deactive')" class="manage-button deactive-button">
                         DEACTIVE KEY
                     </button>
@@ -282,10 +239,17 @@
                             <option value="1Month">1 Month (Ay)</option>
                         </select>
                     </div>
+
+                    <div class="form-row">
+                        <label>MAX DEVICES</label>
+                        <input type="number" id="max-devices-free" class="form-input" value="1" min="1" onchange="updateFreeDeviceCounter()">
+                    </div>
                     
                     <button type="button" onclick="generateKey('free')" class="generate-button">
                         GENERATE FREE KEY
                     </button>
+                    
+                    <div id="free-device-counter" class="device-counter">0 / 1</div>
 
                     <button type="button" onclick="manageKey('free', 'deactive')" class="manage-button deactive-button">
                         DEACTIVE KEY
@@ -331,6 +295,9 @@
             
             if (targetPage === 'page-3a') {
                 updateTotalPrice();
+                updatePremiumDeviceCounter();
+            } else if (targetPage === 'page-3b') {
+                updateFreeDeviceCounter();
             }
         }
 
@@ -351,24 +318,13 @@
             }
         }
 
-        // PREMIUM DURATION SEÇİM FONKSİYONU
-        function selectPremiumDuration(selectedElement) {
-            const list = document.getElementById('premium-duration-list');
-            const items = list.querySelectorAll('.duration-item-premium');
-
-            items.forEach(item => item.classList.remove('selected'));
-            selectedElement.classList.add('selected');
-            
-            updateTotalPrice();
-        }
-        
-        // FREE DURATION SEÇİM FONKSİYONU - Artık Select kullanıldığı için bu fonksiyona gerek yok.
-
-        // TOPLAM FİYAT GÜNCELLEME FONKSİYONU
+        // PREMIUM TOPLAM FİYAT GÜNCELLEME FONKSİYONU
         function updateTotalPrice() {
-            const selectedItem = document.querySelector('.duration-item-premium.selected');
-            // Data attribute'ü yoksa varsayılan 1$'ı kullan.
-            const durationPrice = selectedItem ? parseFloat(selectedItem.getAttribute('data-price')) : 1; 
+            const selectEl = document.getElementById('premium-duration-select');
+            const selectedOption = selectEl.options[selectEl.selectedIndex];
+            
+            // data-price attribute'ünü al, yoksa 1 kullan
+            const durationPrice = parseFloat(selectedOption.getAttribute('data-price')) || 1; 
 
             const maxDevices = parseInt(document.getElementById('max-devices-premium').value) || 1;
             const bulkNumber = parseInt(document.getElementById('bulk-key-number-premium').value) || 1;
@@ -376,6 +332,27 @@
             const totalPrice = durationPrice * maxDevices * bulkNumber;
 
             document.getElementById('total-price-span').textContent = totalPrice.toFixed(0);
+            updatePremiumDeviceCounter(); // Fiyat değişince cihaz sayacı da güncellensin.
+        }
+        
+        // PREMIUM CİHAZ SAYACI GÜNCELLEME FONKSİYONU (YENİ)
+        function updatePremiumDeviceCounter() {
+            const maxDevices = parseInt(document.getElementById('max-devices-premium').value) || 1;
+            const counterEl = document.getElementById('premium-device-counter');
+            // Kullanılan cihaz sayısı şimdilik sabit 0. İleride burası API'dan çekilebilir.
+            const usedDevices = 0; 
+            
+            counterEl.textContent = `${usedDevices} / ${maxDevices}`;
+        }
+        
+        // FREE CİHAZ SAYACI GÜNCELLEME FONKSİYONU (YENİ)
+        function updateFreeDeviceCounter() {
+            const maxDevices = parseInt(document.getElementById('max-devices-free').value) || 1;
+            const counterEl = document.getElementById('free-device-counter');
+            // Kullanılan cihaz sayısı şimdilik sabit 0.
+            const usedDevices = 0; 
+            
+            counterEl.textContent = `${usedDevices} / ${maxDevices}`;
         }
 
 
@@ -383,14 +360,16 @@
         function generateKey(type) {
             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
             let result = '';
-            
             const length = 10; 
-            let prefix = (type === 'premium') ? 'ADM97-' : 'FREE-';
+            let prefix = '';
             
-            if (type === 'free') {
+            if (type === 'premium') {
+                prefix = 'ADM97-';
+            } else if (type === 'free') {
                 const durationSelect = document.getElementById('free-duration-select');
                 const selectedDuration = durationSelect.value;
-                prefix = selectedDuration.replace(/[^0-9A-Z]/ig, '') + '-'; // Sadece rakam ve harf al
+                // Sadece rakam ve harf alıp prefix'i oluştur
+                prefix = selectedDuration.replace(/[^0-9A-Z]/ig, '') + '-'; 
             }
 
             for (let i = 0; i < length; i++) {
@@ -402,6 +381,15 @@
             const outputElement = document.getElementById(`${type}-key-output`);
             outputElement.textContent = finalKey;
             outputElement.style.backgroundColor = '#555';
+            
+            // Anahtar üretilince sayacı da güncelleyelim
+            if (type === 'premium') {
+                // Burada anahtar üretildikten sonra ilk cihazın kullandığını simüle edebiliriz.
+                // Şimdilik sadece maksimum değeri güncelliyoruz.
+                updatePremiumDeviceCounter();
+            } else if (type === 'free') {
+                updateFreeDeviceCounter();
+            }
         }
 
         // ANAHTAR YÖNETİM FONKSİYONU
