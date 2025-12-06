@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdminTT97 - PUBG Domain</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght=400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         /* ======================================================= */
@@ -28,11 +28,21 @@
         
         /* --- ARKA PLAN GÖRSELLERİ --- */
         .bg-page-1 { background-image: url('altin-karakter.jpg'); }
-        .bg-page-2 { background-image: url('asker-miğfer.jpg'); }
-        .bg-page-3b { background-image: url('mumya-karakter.jpg'); opacity: 0.5; }
+        /* Sayfa 2 (Key Seçimi) - PUBG Miğferli Görseli korundu */
+        .bg-page-2 { background-image: url('pubg-miğfer.jpg'); } 
+        /* DÜZELTME: Sayfa 3A ve 3B için yeni arka plan (Mumya Karakterleri) */
+        .bg-page-3a-new { background-image: url('mumya-karakter.jpg'); opacity: 0.5; } 
+        .bg-page-3b-new { background-image: url('mumya-karakter.jpg'); opacity: 0.5; }
 
         /* Başlık Stilleri */
-        .domain-title { font-size: 3em; font-weight: 700; letter-spacing: 5px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); margin-bottom: 50px; border-top: 2px solid rgba(255, 215, 0, 0.7); border-bottom: 2px solid rgba(255, 215, 0, 0.7); padding: 10px 0; }
+        .domain-title { 
+            font-size: 2.2em; 
+            font-weight: 700; letter-spacing: 5px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); 
+            margin-bottom: 50px; 
+            border-top: 2px solid rgba(255, 215, 0, 0.7); 
+            border-bottom: 2px solid rgba(255, 215, 0, 0.7); 
+            padding: 10px 0; 
+        }
         .pubg-logo-text { font-size: 5em; font-weight: 700; color: #fff; text-shadow: 0 0 10px rgba(0, 0, 0, 0.9); margin-bottom: 20px; border: 5px solid #fff; padding: 5px 20px; letter-spacing: 5px; background-color: rgba(0, 0, 0, 0.3); }
         
         /* GENEL INPUT VE SELECT STİLİ */
@@ -102,7 +112,7 @@
             box-shadow: 0 0 10px rgba(255, 215, 0, 0.8); 
         }
         
-        /* Anahtar Çıktısı ve Kullanım Sayacı Stili (YENİ) */
+        /* Anahtar Çıktısı ve Kullanım Sayacı Stili */
         .key-output, .admin-output { 
             text-align: center; padding: 10px; background-color: #555; color: #fff; 
             font-size: 1em; border-radius: 3px; margin-top: 10px;
@@ -268,9 +278,9 @@
     <script>
         const pageConfigs = {
             'page-1': 'bg-page-1',
-            'page-2': 'bg-page-2',
-            'page-3a': 'bg-page-2', 
-            'page-3b': 'bg-page-3b'
+            'page-2': 'bg-page-2', // PUBG Miğferi
+            'page-3a': 'bg-page-3a-new', // Mumya karakterleri
+            'page-3b': 'bg-page-3b-new'  // Mumya karakterleri
         };
 
         const bgOverlay = document.getElementById('bg-overlay');
@@ -289,16 +299,19 @@
             }
 
             bgOverlay.className = 'background-image-overlay'; 
-            bgOverlay.classList.add(pageConfigs[targetPage]); 
-
-            currentPage = targetPage;
-            
+            // Sayfa 3a için yeni sınıf, 3b için yeni sınıf kullanıldı
             if (targetPage === 'page-3a') {
+                bgOverlay.classList.add(pageConfigs[targetPage]);
                 updateTotalPrice();
                 updatePremiumDeviceCounter();
             } else if (targetPage === 'page-3b') {
+                bgOverlay.classList.add(pageConfigs[targetPage]);
                 updateFreeDeviceCounter();
+            } else {
+                bgOverlay.classList.add(pageConfigs[targetPage]);
             }
+
+            currentPage = targetPage;
         }
 
         // GİRİŞ KONTROL FONKSİYONU
@@ -323,7 +336,6 @@
             const selectEl = document.getElementById('premium-duration-select');
             const selectedOption = selectEl.options[selectEl.selectedIndex];
             
-            // data-price attribute'ünü al, yoksa 1 kullan
             const durationPrice = parseFloat(selectedOption.getAttribute('data-price')) || 1; 
 
             const maxDevices = parseInt(document.getElementById('max-devices-premium').value) || 1;
@@ -332,24 +344,22 @@
             const totalPrice = durationPrice * maxDevices * bulkNumber;
 
             document.getElementById('total-price-span').textContent = totalPrice.toFixed(0);
-            updatePremiumDeviceCounter(); // Fiyat değişince cihaz sayacı da güncellensin.
+            updatePremiumDeviceCounter();
         }
         
-        // PREMIUM CİHAZ SAYACI GÜNCELLEME FONKSİYONU (YENİ)
+        // PREMIUM CİHAZ SAYACI GÜNCELLEME FONKSİYONU 
         function updatePremiumDeviceCounter() {
             const maxDevices = parseInt(document.getElementById('max-devices-premium').value) || 1;
             const counterEl = document.getElementById('premium-device-counter');
-            // Kullanılan cihaz sayısı şimdilik sabit 0. İleride burası API'dan çekilebilir.
             const usedDevices = 0; 
             
             counterEl.textContent = `${usedDevices} / ${maxDevices}`;
         }
         
-        // FREE CİHAZ SAYACI GÜNCELLEME FONKSİYONU (YENİ)
+        // FREE CİHAZ SAYACI GÜNCELLEME FONKSİYONU 
         function updateFreeDeviceCounter() {
             const maxDevices = parseInt(document.getElementById('max-devices-free').value) || 1;
             const counterEl = document.getElementById('free-device-counter');
-            // Kullanılan cihaz sayısı şimdilik sabit 0.
             const usedDevices = 0; 
             
             counterEl.textContent = `${usedDevices} / ${maxDevices}`;
@@ -368,7 +378,6 @@
             } else if (type === 'free') {
                 const durationSelect = document.getElementById('free-duration-select');
                 const selectedDuration = durationSelect.value;
-                // Sadece rakam ve harf alıp prefix'i oluştur
                 prefix = selectedDuration.replace(/[^0-9A-Z]/ig, '') + '-'; 
             }
 
@@ -382,10 +391,7 @@
             outputElement.textContent = finalKey;
             outputElement.style.backgroundColor = '#555';
             
-            // Anahtar üretilince sayacı da güncelleyelim
             if (type === 'premium') {
-                // Burada anahtar üretildikten sonra ilk cihazın kullandığını simüle edebiliriz.
-                // Şimdilik sadece maksimum değeri güncelliyoruz.
                 updatePremiumDeviceCounter();
             } else if (type === 'free') {
                 updateFreeDeviceCounter();
